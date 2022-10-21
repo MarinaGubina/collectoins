@@ -37,4 +37,12 @@ public class ShoppingList {
         }
     }
 
+    public double getSumCost() {
+        double sumCost = 0;
+        for (Product p : shoppingList) {
+            sumCost = sumCost + p.getCost()* p.getWeight();
+        }
+        return sumCost;
+    }
+
 }
