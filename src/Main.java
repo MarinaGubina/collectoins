@@ -31,8 +31,8 @@ public class Main {
         // Домашнее задание 2. задание 1
 
         ShoppingList vegetables = new ShoppingList();
-        vegetables.add(cucumber);
-        vegetables.add(tomato);
+        vegetables.add(cucumber,1);
+        vegetables.add(tomato,0);
 
         Recipe salad = new Recipe("Салат",vegetables);
         salad.getSumCost();
@@ -40,15 +40,18 @@ public class Main {
         Recipe soup = new Recipe("Суп",vegetables);
 
         ShoppingList fruits = new ShoppingList();
-        fruits.add(banana);
-        fruits.add(apple);
+        fruits.add(banana,4);
+        fruits.add(apple,3);
         Recipe smoothie = new Recipe("Смузи",fruits);
 
-        BookOfRecipe bookOfRecipe  = new BookOfRecipe();
+        System.out.println(salad.getSumCost());
+        System.out.println(smoothie.getSumCost());
+
+        /*BookOfRecipe bookOfRecipe  = new BookOfRecipe();
         bookOfRecipe.add(salad);
         bookOfRecipe.add(soup);
         bookOfRecipe.add(smoothie);
         bookOfRecipe.getRecipe();
-        bookOfRecipe.add(salad);
+        bookOfRecipe.add(salad);*/
     }
 }

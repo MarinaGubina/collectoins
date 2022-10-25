@@ -1,24 +1,32 @@
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class ShoppingList {
-    private  Set<Product> shoppingList;
+    private Map<Product, Integer> shoppingList;
+    private int quantity;
 
     public ShoppingList() {
-        shoppingList = new HashSet<Product>();
+        shoppingList = new HashMap<>();
     }
 
-    public void add(Product product){
-        if(shoppingList.contains(product)){
+    public void add(Product product,int quantity){
+        if(shoppingList.containsKey(product)){
             throw new RuntimeException(product.getName()+" - данный продукт уже есть в списке!");
         }
         else {
-            shoppingList.add(product);
+            if(quantity < 1 ){
+                shoppingList.put(product,1);
+            }
+            else{
+                shoppingList.put(product,quantity);
+            }
         }
     }
 
     public void contains(Product product){
-        if(shoppingList.contains(product) == true){
+        if(shoppingList.containsKey(product) == true){
             System.out.println(product.getName() + " - уже есть в списке");
         }
         else {
@@ -32,15 +40,15 @@ public class ShoppingList {
     }
 
     public void getProduct(){
-                for (Product product:shoppingList) {
+                for (Product product:shoppingList.keySet()) {
             System.out.println(product.toString());
         }
     }
 
     public double getSumCost() {
         double sumCost = 0;
-        for (Product p : shoppingList) {
-            sumCost = sumCost + p.getCost()* p.getWeight();
+        for (Product p : shoppingList.keySet()) {
+            sumCost = sumCost + p.getCost()* shoppingList.get(p);
         }
         return sumCost;
     }
