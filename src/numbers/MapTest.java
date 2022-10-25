@@ -30,7 +30,6 @@ public class MapTest {
                 throw new RuntimeException("Такая пара 'ключ-значение' уже есть в коллекции!");
             }
         }
-
         public void printTest(){
             for (Map.Entry<String, Integer> pair: map.entrySet()) {
                 System.out.println(pair.getKey() + " --> " + pair.getValue());
